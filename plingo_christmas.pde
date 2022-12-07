@@ -5,32 +5,34 @@ float gravity = -0.2;
 int score = 0;
 int[] values = new int[]{ 100, 50, 25, 10, 5};
 Text scoreText = null;
+float pinRadius = 4;
+float ballRadius = 6;
 
 void setup(){
-  size(800, 1000);
+  size(500, 600);
   generatePins();
-  ball = new PlingoObject(random(width), height + 300, 7);
+  ball = new PlingoObject(random(width), height + 300, ballRadius);
 }
 
 void generatePins(){
   for(int i = 1; i < 5; i++){
     for(int j = 0; j < i; j++){
-      plingoPins.add(new PlingoObject((j - (float)(i - 1) / 2) * width / 15 + width / 2, i * height / 25 + 50, 5));
+      plingoPins.add(new PlingoObject((j - (float)(i - 1) / 2) * width / 15 + width / 2, i * height / 25 + 50, pinRadius));
     }
   }
   for(int i = 3; i < 8; i++){
     for(int j = 0; j < i; j++){
-      plingoPins.add(new PlingoObject((j - (float)(i - 1) / 2) * width / 15 + width / 2, (i + 2) * height / 25 + 50, 5));
+      plingoPins.add(new PlingoObject((j - (float)(i - 1) / 2) * width / 15 + width / 2, (i + 2) * height / 25 + 50, pinRadius));
     }
   }
   for(int i = 6; i < 11; i++){
     for(int j = 0; j < i; j++){
-      plingoPins.add(new PlingoObject((j - (float)(i - 1) / 2) * width /15 + width / 2, (i + 4) * height / 25 + 50, 5));
+      plingoPins.add(new PlingoObject((j - (float)(i - 1) / 2) * width /15 + width / 2, (i + 4) * height / 25 + 50, pinRadius));
     }
   }
   for(int i = 9; i < 15; i++){
     for(int j = 0; j < i; j++){
-      plingoPins.add(new PlingoObject((j - (float)(i - 1) / 2) * width / 15 + width / 2, (i + 6) * height / 25 + 50, 5));
+      plingoPins.add(new PlingoObject((j - (float)(i - 1) / 2) * width / 15 + width / 2, (i + 6) * height / 25 + 50, pinRadius));
     }
   }
 }
@@ -48,7 +50,7 @@ void draw(){
   drawTree();
   
   fill(255);
-  circle(sin(millis() / 2000.0) * (width - 50) / 2 + width / 2, 30, 14);
+  circle(sin(millis() / 2000.0) * (width - 50) / 2 + width / 2, 30, ballRadius * 2);
 }
 
 void mousePressed(){
